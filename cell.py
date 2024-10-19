@@ -24,10 +24,15 @@ class Cell:
 
     def right_click_actions(self, event):
         print('right click')
-
-    def __repr__(self):
-        return f'Cell({self.x,},{self.y})'
     
     @staticmethod
     def randomize():
         picked_cells = random.sample(Cell.all, 9)
+
+        for x in picked_cells:
+            x.is_mine = True
+
+    def __repr__(self):
+        return f'Cell({self.x,},{self.y})'
+    
+    
