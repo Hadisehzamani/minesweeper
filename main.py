@@ -36,11 +36,12 @@ center_frame.place(
 
 for x in range(6):
     for y in range(6):
-        c = Cell()
+        c = Cell(x,y)
         c.create_btn_object(center_frame)
         c.cell_btn_object.grid(
             column=x, row=y
         )
 
+Cell.randomize()
 
 root.mainloop()

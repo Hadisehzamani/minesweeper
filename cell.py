@@ -1,14 +1,19 @@
 from tkinter import Button
+import random
 
 class Cell:
-    def __init__(self, is_mine=False):
+    all = []
+    def __init__(self,x,y, is_mine=False):
         self.is_mine = is_mine
         self.cell_btn_object = None
+        self.x = x
+        self.y = y
+        Cell.all.append(self)
 
     def create_btn_object(self, location):
         btn = Button(
             location,
-            text= 'click'
+            text= f'{self.x},{self.y}'
         )
         btn.bind('<Button-1>', self.left_click_actions)
         btn.bind('<Button-3>', self.right_click_actions)
@@ -19,3 +24,10 @@ class Cell:
 
     def right_click_actions(self, event):
         print('right click')
+
+    def __repr__(self):
+        return f'Cell({self.x,},{self.y})'
+    
+    @staticmethod
+    def randomize():
+        picked_cells = random.sample(Cell.all, 9)
